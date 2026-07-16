@@ -6,6 +6,15 @@
 <title>Produto — Rocha Firme Moda</title>
 <meta name="description" content="Confira essa peça na Rocha Firme Moda.">
 <link rel="stylesheet" href="style.css">
+<style>
+  .galeria-thumbs{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+  .galeria-thumbs img{
+    width:64px;height:80px;object-fit:cover;border-radius:3px;cursor:pointer;
+    border:2px solid transparent;opacity:.7;transition:opacity .2s ease,border-color .2s ease;
+  }
+  .galeria-thumbs img:hover{opacity:1}
+  .galeria-thumbs img.ativa{opacity:1;border-color:var(--clay)}
+</style>
 </head>
 <body>
 
@@ -30,79 +39,115 @@
   mountLayout('todas');
 
   (async () => {
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get('slug');
     const wrap = document.getElementById('conteudoProduto');
 
-    if(!slug){
-      wrap.innerHTML = `<div class="empty-state">Produto não especificado.<br><a href="todas.html" class="link-more" style="display:inline-block;margin-top:12px">Ver catálogo completo →</a></div>`;
-      return;
+    function mostrarErro(texto){
+      wrap.innerHTML = `<div class="empty-state">${texto}<br><a href="todas.html" class="link-more" style="display:inline-block;margin-top:12px">Ver catálogo completo →</a></div>`;
     }
 
-    const catalogo = await carregarCatalogo();
-    let achado = null, catKey = null;
-    for(const key of Object.keys(catalogo)){
-      const p = catalogo[key].items.find(item => item.slug === slug);
-      if(p){ achado = p; catKey = key; break; }
-    }
+    try{
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      if(!slug){ mostrarErro('Produto não especificado.'); return; }
 
-    if(!achado){
-      wrap.innerHTML = `<div class="empty-state">Esse produto não foi encontrado (pode ter sido removido).<br><a href="todas.html" class="link-more" style="display:inline-block;margin-top:12px">Ver catálogo completo →</a></div>`;
-      return;
-    }
+      const catalogo = await carregarCatalogo();
+      let achado = null, catKey = null;
+      for(const key of Object.keys(catalogo)){
+        const p = (catalogo[key].items || []).find(item => item.slug === slug);
+        if(p){ achado = p; catKey = key; break; }
+      }
+      if(!achado){ mostrarErro('Esse produto não foi encontrado (pode ter sido removido).'); return; }
 
-    const p = achado;
-    const catLabel = CATEGORIA_INFO[catKey] ? CATEGORIA_INFO[catKey].label : '';
-    const icon = CATEGORIA_INFO[catKey] ? CATEGORIA_INFO[catKey].icon : 'ic-selo';
-    const nomeSeguro = escapeHTML(p.nome);
-    const descSeguro = escapeHTML(p.desc);
-    const fotoSrc = p.foto ? (/^https?:\/\//i.test(p.foto) ? p.foto : `fotos/${p.foto}`) : null;
-    const midia = fotoSrc
-      ? `<img src="${fotoSrc}" alt="${nomeSeguro}" style="width:100%;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-         <div class="product-detail-media-fallback" style="display:none;align-items:center;justify-content:center;aspect-ratio:3/4"><svg style="width:52%;color:var(--clay-dark)"><use href="icons.svg#${icon}"></use></svg></div>`
-      : `<div style="display:flex;align-items:center;justify-content:center;aspect-ratio:3/4"><svg style="width:52%;color:var(--clay-dark)"><use href="icons.svg#${icon}"></use></svg></div>`;
-    const swatchesHTML = p.cores.map(c => `<span class="swatch" style="background:${corHex(c)}" title="${escapeHTML(nomeCorExibir(c))}"></span>`).join('');
-    const sizesHTML = p.tamanhos.map(t => `<span>${escapeHTML(t)}</span>`).join('');
-    const linkCompleto = PAGINAS_PRONTAS.has(p.slug) ? produtoLink(p.slug) : `${window.LOJA.siteUrl}/produto.html?slug=${encodeURIComponent(p.slug)}`;
-    const msg = `Olá! Tenho interesse nesta peça da Rocha Firme Moda:\n${p.nome} - ${fmtPreco(p.preco)}\n${linkCompleto}\n\nAinda está disponível?`;
+      const p = achado;
+      // valores defensivos — nunca deixa um campo ausente quebrar a página
+      const nome = p.nome || 'Produto sem nome';
+      const desc = p.desc || '';
+      const preco = typeof p.preco === 'number' ? p.preco : 0;
+      const tamanhos = Array.isArray(p.tamanhos) ? p.tamanhos : [];
+      const cores = Array.isArray(p.cores) ? p.cores : [];
+      const catLabel = (CATEGORIA_INFO[catKey] && CATEGORIA_INFO[catKey].label) || '';
+      const icon = (CATEGORIA_INFO[catKey] && CATEGORIA_INFO[catKey].icon) || 'ic-selo';
 
-    document.title = `${p.nome} — Rocha Firme Moda`;
-    document.getElementById('breadcrumbAtual').textContent = p.nome;
-    document.getElementById('breadcrumb').innerHTML =
-      `<a href="index.html">Início</a> / <a href="${catKey}.html">${escapeHTML(catLabel)}</a> / ${nomeSeguro}`;
+      const nomeSeguro = escapeHTML(nome);
+      const descSeguro = escapeHTML(desc);
+      const fotos = fotosDoProduto(p);
 
-    wrap.innerHTML = `
-      <div class="product-detail">
-        <div class="product-detail-media">${midia}</div>
-        <div class="product-detail-info reveal">
-          <p class="eyebrow">${escapeHTML(catLabel)}</p>
-          <h1>${nomeSeguro}</h1>
-          <p class="product-detail-desc">${descSeguro}</p>
-          <div class="product-price">${fmtPreco(p.preco)}</div>
-          <div class="swatches">${swatchesHTML}</div>
-          <div class="sizes">${sizesHTML}</div>
-          <a class="btn btn-primary" data-whats="${escapeHTML(msg)}" style="margin-top:24px">
-            <svg><use href="icons.svg#ic-whats"></use></svg>
-            Comprar no WhatsApp
-          </a>
-          <div style="margin-top:18px">
-            <a class="link-more" href="${catKey}.html">← Voltar para ${escapeHTML(catLabel)}</a>
+      const mediaHTML = fotos.length
+        ? `<img id="fotoPrincipal" src="${fotos[0]}" alt="${nomeSeguro}" style="width:100%;display:block"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+           <div class="foto-fallback" style="display:none;align-items:center;justify-content:center;aspect-ratio:3/4">
+             <svg style="width:52%;color:var(--clay-dark)"><use href="icons.svg#${icon}"></use></svg>
+           </div>`
+        : `<div style="display:flex;align-items:center;justify-content:center;aspect-ratio:3/4">
+             <svg style="width:52%;color:var(--clay-dark)"><use href="icons.svg#${icon}"></use></svg>
+           </div>`;
+
+      const thumbsHTML = fotos.length > 1
+        ? `<div class="galeria-thumbs">${fotos.map((f, i) =>
+            `<img src="${f}" alt="Foto ${i+1} de ${nomeSeguro}" class="${i===0?'ativa':''}" onclick="trocarFotoPrincipal(this,'${f.replace(/'/g,"\\'")}')">`
+          ).join('')}</div>`
+        : '';
+
+      const swatchesHTML = cores.map(c => `<span class="swatch" style="background:${corHex(c)}" title="${escapeHTML(nomeCorExibir(c))}"></span>`).join('');
+      const sizesHTML = tamanhos.map(t => `<span>${escapeHTML(t)}</span>`).join('');
+      const linkCompleto = PAGINAS_PRONTAS.has(p.slug) ? produtoLink(p.slug) : `${window.LOJA.siteUrl}/produto.html?slug=${encodeURIComponent(p.slug)}`;
+      const msg = `Olá! Tenho interesse nesta peça da Rocha Firme Moda:\n${nome} - ${fmtPreco(preco)}\n${linkCompleto}\n\nAinda está disponível?`;
+
+      document.title = `${nome} — Rocha Firme Moda`;
+      document.getElementById('breadcrumbAtual').textContent = nome;
+      if(catKey){
+        document.getElementById('breadcrumb').innerHTML =
+          `<a href="index.html">Início</a> / <a href="${catKey}.html">${escapeHTML(catLabel)}</a> / ${nomeSeguro}`;
+      }
+
+      wrap.innerHTML = `
+        <div class="product-detail">
+          <div class="product-detail-media">
+            ${mediaHTML}
+            ${thumbsHTML}
           </div>
-        </div>
-      </div>`;
+          <div class="product-detail-info reveal">
+            <p class="eyebrow">${escapeHTML(catLabel)}</p>
+            <h1>${nomeSeguro}</h1>
+            <p class="product-detail-desc">${descSeguro}</p>
+            <div class="product-price">${fmtPreco(preco)}</div>
+            <div class="swatches">${swatchesHTML}</div>
+            <div class="sizes">${sizesHTML}</div>
+            <a class="btn btn-primary" data-whats="${escapeHTML(msg)}" style="margin-top:24px">
+              <svg><use href="icons.svg#ic-whats"></use></svg>
+              Comprar no WhatsApp
+            </a>
+            <div style="margin-top:18px">
+              <a class="link-more" href="${catKey || 'todas.html'}${catKey ? '.html' : ''}">← Voltar para ${escapeHTML(catLabel || 'o catálogo')}</a>
+            </div>
+          </div>
+        </div>`;
 
-    document.getElementById('ctaCategoria').innerHTML = `
-      <section class="cta-strip">
-        <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
-        <h2 class="reveal">Veja mais opções de ${escapeHTML(catLabel.toLowerCase())} no catálogo.</h2>
-        <a class="btn" href="${catKey}.html">Ver ${escapeHTML(catLabel.toLowerCase())}</a>
-      </section>`;
+      if(catKey){
+        document.getElementById('ctaCategoria').innerHTML = `
+          <section class="cta-strip">
+            <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
+            <h2 class="reveal">Veja mais opções de ${escapeHTML(catLabel.toLowerCase())} no catálogo.</h2>
+            <a class="btn" href="${catKey}.html">Ver ${escapeHTML(catLabel.toLowerCase())}</a>
+          </section>`;
+      }
 
-    document.querySelectorAll('[data-whats]').forEach(a => {
-      a.href = whatsLink(a.getAttribute('data-whats'));
-      a.target = '_blank'; a.rel = 'noopener';
-    });
+      document.querySelectorAll('[data-whats]').forEach(a => {
+        a.href = whatsLink(a.getAttribute('data-whats'));
+        a.target = '_blank'; a.rel = 'noopener';
+      });
+    }catch(err){
+      console.error('Erro ao carregar a página do produto:', err);
+      mostrarErro('Não foi possível carregar esse produto agora. Tenta recarregar a página.');
+    }
   })();
+
+  function trocarFotoPrincipal(thumb, url){
+    const principal = document.getElementById('fotoPrincipal');
+    if(principal) principal.src = url;
+    document.querySelectorAll('.galeria-thumbs img').forEach(t => t.classList.remove('ativa'));
+    thumb.classList.add('ativa');
+  }
 </script>
 </body>
 </html>
