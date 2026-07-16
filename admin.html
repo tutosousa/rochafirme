@@ -21,6 +21,17 @@
   .campo textarea{resize:vertical;min-height:70px}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .form-grid .full{grid-column:1/-1}
+  .foto-item{position:relative;width:90px}
+  .foto-item img{width:90px;height:112px;object-fit:cover;border-radius:4px;display:block;border:1px solid var(--stone-dark)}
+  .foto-item .foto-remover{
+    position:absolute;top:-8px;right:-8px;width:22px;height:22px;border-radius:50%;
+    background:var(--clay);color:#fff;border:2px solid var(--paper);cursor:pointer;
+    font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;
+  }
+  .foto-item .foto-capa{
+    position:absolute;bottom:2px;left:2px;right:2px;background:rgba(34,31,28,.75);color:#fff;
+    font-family:var(--font-mono);font-size:.58rem;text-align:center;padding:2px 0;border-radius:2px;
+  }
   .msg{padding:12px 16px;border-radius:var(--radius);font-size:.88rem;margin-bottom:18px;display:none}
   .msg.erro{background:#f4d9d3;color:var(--clay-dark);display:block}
   .msg.ok{background:#dfe6da;color:var(--moss);display:block}
@@ -101,13 +112,11 @@
             <input type="text" id="pPreco" placeholder="229,90" required>
           </div>
           <div class="campo full">
-            <label for="pFotoArquivo">Foto do produto</label>
-            <input type="file" id="pFotoArquivo" accept="image/*">
+            <label for="pFotoArquivo">Fotos do produto (pode escolher várias de uma vez)</label>
+            <label for="pFotoArquivo">Fotos do produto (pode escolher várias de uma vez)</label>
+            <input type="file" id="pFotoArquivo" accept="image/*" multiple>
             <input type="hidden" id="pFoto">
-            <div id="fotoPreviewWrap" style="margin-top:10px;display:none">
-              <img id="fotoPreview" style="max-width:160px;border-radius:4px;display:block" alt="Prévia da foto">
-              <button type="button" class="btn-mini" id="btnRemoverFoto" style="margin-top:8px">remover foto</button>
-            </div>
+            <div id="fotoPreviewWrap" style="margin-top:10px;display:none;flex-wrap:wrap;gap:10px" ></div>
           </div>
           <div class="campo">
             <label for="pTamanhos">Tamanhos (separados por ;)</label>
@@ -210,6 +219,7 @@
         else if(msg.toLowerCase().includes('invalid login credentials')) msg = 'E-mail ou senha incorretos — confira se esse e-mail aparece em Authentication → Users no Supabase, e se está usando a senha do USUÁRIO (não a senha do banco criada ao abrir o projeto).';
         mostrarMsg(msgLoginEl, msg, 'erro');
         return;
+        return;
       }
       mostrarPainel();
     });
@@ -254,9 +264,9 @@
       document.getElementById('pCategoria').value = p.categoria;
       document.getElementById('pNome').value = p.nome;
       document.getElementById('pPreco').value = String(p.preco).replace('.', ',');
-      limparFoto();
-      document.getElementById('pFoto').value = p.foto || '';
-      if(p.foto) mostrarPreview(p.foto);
+      arquivosNovos = [];
+      fotosAtuais = (p.foto || '').split(';').map(f => f.trim()).filter(Boolean);
+      renderPreviews();
       document.getElementById('pTamanhos').value = p.tamanhos || '';
       document.getElementById('pCores').value = p.cores || '';
       document.getElementById('pNovo').value = String(!!p.novo);
@@ -287,28 +297,60 @@
     const inputFotoArquivo = document.getElementById('pFotoArquivo');
     const inputFotoHidden = document.getElementById('pFoto');
     const fotoPreviewWrap = document.getElementById('fotoPreviewWrap');
-    const fotoPreview = document.getElementById('fotoPreview');
 
-    function mostrarPreview(url){
-      fotoPreview.src = url;
-      fotoPreviewWrap.style.display = 'block';
+    // fotosAtuais: URLs já salvas (produto em edição) que continuam valendo
+    // arquivosNovos: File[] escolhidos agora, ainda não enviados
+    let fotosAtuais = [];
+    let arquivosNovos = [];
+
+    function renderPreviews(){
+      const itensExistentes = fotosAtuais.map((url, i) => `
+        <div class="foto-item" data-tipo="existente" data-index="${i}">
+          <img src="${url}" alt="Foto ${i+1}">
+          ${i === 0 ? '<span class="foto-capa">Capa</span>' : ''}
+          <button type="button" class="foto-remover" title="Remover" data-remover-existente="${i}">×</button>
+        </div>`).join('');
+      const itensNovos = arquivosNovos.map((file, i) => `
+        <div class="foto-item" data-tipo="novo" data-index="${i}">
+          <img src="${URL.createObjectURL(file)}" alt="Nova foto ${i+1}">
+          ${(fotosAtuais.length === 0 && i === 0) ? '<span class="foto-capa">Capa</span>' : ''}
+          <button type="button" class="foto-remover" title="Remover" data-remover-novo="${i}">×</button>
+        </div>`).join('');
+
+      fotoPreviewWrap.innerHTML = itensExistentes + itensNovos;
+      fotoPreviewWrap.style.display = (fotosAtuais.length || arquivosNovos.length) ? 'flex' : 'none';
+
+      fotoPreviewWrap.querySelectorAll('[data-remover-existente]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          fotosAtuais.splice(Number(btn.getAttribute('data-remover-existente')), 1);
+          renderPreviews();
+        });
+      });
+      fotoPreviewWrap.querySelectorAll('[data-remover-novo]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          arquivosNovos.splice(Number(btn.getAttribute('data-remover-novo')), 1);
+          renderPreviews();
+          renderPreviews();
+        });
+      });
     }
+
     function limparFoto(){
       inputFotoArquivo.value = '';
-      inputFotoHidden.value = '';
-      fotoPreviewWrap.style.display = 'none';
-      fotoPreview.src = '';
+      fotosAtuais = [];
+      arquivosNovos = [];
+      renderPreviews();
     }
-    inputFotoArquivo.addEventListener('change', () => {
-      const file = inputFotoArquivo.files[0];
-      if(!file) return;
-      mostrarPreview(URL.createObjectURL(file));
-    });
-    document.getElementById('btnRemoverFoto').addEventListener('click', limparFoto);
 
-    // envia o arquivo pro Storage do Supabase (bucket "fotos") e devolve a URL pública
+    inputFotoArquivo.addEventListener('change', () => {
+      arquivosNovos = arquivosNovos.concat(Array.from(inputFotoArquivo.files));
+      inputFotoArquivo.value = ''; // permite escolher os mesmos arquivos de novo se remover e re-adicionar
+      renderPreviews();
+    });
+
+    // envia um arquivo pro Storage do Supabase (bucket "fotos") e devolve a URL pública
     async function enviarFotoParaStorage(file){
-      const nomeArquivo = `${Date.now()}-${slugLocal(file.name.replace(/\.[^.]+$/, ''))}.${file.name.split('.').pop()}`;
+      const nomeArquivo = `${Date.now()}-${Math.random().toString(36).slice(2,7)}-${slugLocal(file.name.replace(/\.[^.]+$/, ''))}.${file.name.split('.').pop()}`;
       const { error } = await supabase.storage.from('fotos').upload(nomeArquivo, file, { cacheControl: '3600', upsert: false });
       if(error) throw error;
       const { data } = supabase.storage.from('fotos').getPublicUrl(nomeArquivo);
@@ -326,16 +368,18 @@
       const btnSalvar = document.getElementById('btnSalvar');
       const textoOriginalBotao = btnSalvar.textContent;
 
-      // se uma foto nova foi escolhida, envia pro Storage antes de salvar o produto
-      const arquivoFoto = inputFotoArquivo.files[0];
-      if(arquivoFoto){
+      // envia todas as fotos novas escolhidas pro Storage antes de salvar o produto
+      let urlsFinais = fotosAtuais.slice();
+      if(arquivosNovos.length){
         btnSalvar.disabled = true;
-        btnSalvar.textContent = 'Enviando foto…';
         try{
-          const url = await enviarFotoParaStorage(arquivoFoto);
-          inputFotoHidden.value = url;
+          for(let i = 0; i < arquivosNovos.length; i++){
+            btnSalvar.textContent = `Enviando foto ${i+1} de ${arquivosNovos.length}…`;
+            const url = await enviarFotoParaStorage(arquivosNovos[i]);
+            urlsFinais.push(url);
+          }
         }catch(err){
-          mostrarMsg(msgPainel, 'Erro ao enviar a foto: ' + err.message, 'erro');
+          mostrarMsg(msgPainel, 'Erro ao enviar foto: ' + err.message, 'erro');
           btnSalvar.disabled = false;
           btnSalvar.textContent = textoOriginalBotao;
           return;
@@ -346,7 +390,7 @@
         categoria: document.getElementById('pCategoria').value,
         nome,
         preco,
-        foto: inputFotoHidden.value.trim() || null,
+        foto: urlsFinais.join(';') || null,
         tamanhos: document.getElementById('pTamanhos').value.trim(),
         cores: document.getElementById('pCores').value.trim(),
         novo: document.getElementById('pNovo').value === 'true',
