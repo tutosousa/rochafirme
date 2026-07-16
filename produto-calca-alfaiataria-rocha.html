@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calça Alfaiataria Rocha — Rocha Firme Moda</title>
+<meta name="description" content="Corte reto, cintura alta, tecido encorpado. R$ 189,90. Fale com a gente no WhatsApp.">
+
+<!-- Open Graph / prévia no WhatsApp -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="Calça Alfaiataria Rocha — Rocha Firme Moda">
+<meta property="og:description" content="Corte reto, cintura alta, tecido encorpado. R$ 189,90. Fale com a gente no WhatsApp.">
+<meta property="og:image" content="https://rochafirmemoda.com.br/produto-imagens/calca-alfaiataria-rocha.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1500">
+<meta property="og:url" content="https://rochafirmemoda.com.br/produto-calca-alfaiataria-rocha.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / <a href="calcas.html">Calças</a> / Calça Alfaiataria Rocha</p>
+
+<section class="section" style="padding-top:36px">
+  <div class="product-detail">
+    <div class="product-detail-media">
+      <img src="produto-imagens/calca-alfaiataria-rocha.png" alt="Calça Alfaiataria Rocha" style="width:100%;display:block">
+    </div>
+    <div class="product-detail-info reveal">
+      <p class="eyebrow">Calças</p>
+      <h1>Calça Alfaiataria Rocha</h1>
+      <p class="product-detail-desc">Corte reto, cintura alta, tecido encorpado.</p>
+      <div class="product-price">R$ 189,90</div>
+      <div class="swatches"><span class="swatch" style="background:#221F1C" title="Preto"></span><span class="swatch" style="background:#D8C9A8" title="Areia"></span><span class="swatch" style="background:#4F6178" title="Jeans"></span></div>
+      <div class="sizes"><span>36</span><span>38</span><span>40</span><span>42</span><span>44</span></div>
+      <a class="btn btn-primary" data-whats="Olá! Tenho interesse nesta peça da Rocha Firme Moda:
+Calça Alfaiataria Rocha - R$ 189,90
+https://rochafirmemoda.com.br/produto-calca-alfaiataria-rocha.html
+
+Ainda está disponível?" style="margin-top:24px">
+        <svg><use href="icons.svg#ic-whats"></use></svg>
+        Comprar no WhatsApp
+      </a>
+      <div style="margin-top:18px">
+        <a class="link-more" href="calcas.html">← Voltar para Calças</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
+  <h2 class="reveal">Veja mais opções de calças no catálogo.</h2>
+  <a class="btn" href="calcas.html">Ver calças</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('calcas');
+  document.querySelectorAll('[data-whats]').forEach(a => {
+    a.href = whatsLink(a.getAttribute('data-whats'));
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+</script>
+</body>
+</html>

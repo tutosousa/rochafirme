@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Manga Longa Rocha — Rocha Firme Moda</title>
+<meta name="description" content="Gola alta, fecho de pressão. R$ 109,90. Fale com a gente no WhatsApp.">
+
+<!-- Open Graph / prévia no WhatsApp -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="Body Manga Longa Rocha — Rocha Firme Moda">
+<meta property="og:description" content="Gola alta, fecho de pressão. R$ 109,90. Fale com a gente no WhatsApp.">
+<meta property="og:image" content="https://rochafirmemoda.com.br/produto-imagens/body-manga-longa-rocha.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1500">
+<meta property="og:url" content="https://rochafirmemoda.com.br/produto-body-manga-longa-rocha.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / <a href="body.html">Body</a> / Body Manga Longa Rocha</p>
+
+<section class="section" style="padding-top:36px">
+  <div class="product-detail">
+    <div class="product-detail-media">
+      <img src="produto-imagens/body-manga-longa-rocha.png" alt="Body Manga Longa Rocha" style="width:100%;display:block">
+    </div>
+    <div class="product-detail-info reveal">
+      <p class="eyebrow">Body</p>
+      <h1>Body Manga Longa Rocha</h1>
+      <p class="product-detail-desc">Gola alta, fecho de pressão.</p>
+      <div class="product-price">R$ 109,90</div>
+      <div class="swatches"><span class="swatch" style="background:#221F1C" title="Preto"></span><span class="swatch" style="background:#A6432F" title="Terracota"></span></div>
+      <div class="sizes"><span>P</span><span>M</span><span>G</span></div>
+      <a class="btn btn-primary" data-whats="Olá! Tenho interesse nesta peça da Rocha Firme Moda:
+Body Manga Longa Rocha - R$ 109,90
+https://rochafirmemoda.com.br/produto-body-manga-longa-rocha.html
+
+Ainda está disponível?" style="margin-top:24px">
+        <svg><use href="icons.svg#ic-whats"></use></svg>
+        Comprar no WhatsApp
+      </a>
+      <div style="margin-top:18px">
+        <a class="link-more" href="body.html">← Voltar para Body</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
+  <h2 class="reveal">Veja mais opções de body no catálogo.</h2>
+  <a class="btn" href="body.html">Ver body</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('body');
+  document.querySelectorAll('[data-whats]').forEach(a => {
+    a.href = whatsLink(a.getAttribute('data-whats'));
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+</script>
+</body>
+</html>

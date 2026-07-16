@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minha Conta — Rocha Firme Moda</title>
+<meta name="description" content="Acompanhe pedidos e fale com a Rocha Firme Moda direto pelo WhatsApp.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .conta-card{
+    max-width:560px;margin:0 auto;background:var(--stone);border-radius:var(--radius);
+    padding:48px 40px;text-align:center;
+  }
+  .conta-card svg{width:56px;height:56px;color:var(--clay-dark);margin-bottom:20px}
+  .conta-card h1{font-size:1.7rem;margin-bottom:14px}
+  .conta-card p{color:#4a453e;max-width:42ch;margin:0 auto 26px}
+</style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / Minha Conta</p>
+
+<section class="section" style="padding-top:56px">
+  <div class="conta-card reveal">
+    <svg><use href="icons.svg#ic-user"></use></svg>
+    <h1>Ainda não temos login por aqui</h1>
+    <p>A Rocha Firme Moda é atendida por gente de verdade — seus pedidos, trocas e o acompanhamento de entrega são combinados direto pelo WhatsApp, sem precisar criar conta ou senha.</p>
+    <a class="btn btn-primary" data-whats="Olá! Quero acompanhar um pedido / falar sobre minha conta na Rocha Firme Moda.">
+      Falar com a loja no WhatsApp
+    </a>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="manifesto-list" style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+    <div class="reveal" style="text-align:center">
+      <p class="eyebrow" style="justify-content:center">Pedidos</p>
+      <p style="color:#4a453e;font-size:.92rem;margin-top:10px">Manda o número do pedido no WhatsApp que a gente confirma status e entrega na hora.</p>
+    </div>
+    <div class="reveal" style="text-align:center">
+      <p class="eyebrow" style="justify-content:center">Trocas</p>
+      <p style="color:#4a453e;font-size:.92rem;margin-top:10px">Até 30 dias corridos após o recebimento. Detalhes na <a href="contato.html#trocas" style="text-decoration:underline">página de contato</a>.</p>
+    </div>
+    <div class="reveal" style="text-align:center">
+      <p class="eyebrow" style="justify-content:center">Favoritos</p>
+      <p style="color:#4a453e;font-size:.92rem;margin-top:10px">Viu uma peça e quer guardar? Manda o link pra você mesma no WhatsApp — é o nosso "favoritos" por enquanto.</p>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script>
+  mountLayout('conta');
+</script>
+</body>
+</html>

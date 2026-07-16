@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocha Firme Moda — Feita pra durar. Feita pra você.</title>
+<meta name="description" content="Rocha Firme Moda: vestidos, blusas, calças, jaquetas, jeans, saias, bolsas, acessórios e mais. Corte firme, tecido que dura. Compre direto pelo WhatsApp.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Nova coleção · Inverno 2026</p>
+    <h1>Feita pra<br><em>durar.</em><br>Feita pra<br>você.</h1>
+    <p>Peças com corte firme, tecido que aguenta o uso de verdade e acabamento que não sai na segunda lavada. Moda com espinha dorsal.</p>
+    <div class="hero-actions">
+      <button type="button" class="btn btn-primary" id="heroOpenCat">Ver categorias</button>
+      <a class="btn btn-ghost" data-whats="Olá! Quero ver as novidades da Rocha Firme Moda.">Falar no WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <svg><use href="icons.svg#ic-jaqueta"></use></svg>
+    <svg class="hero-stamp"><use href="icons.svg#ic-selo"></use></svg>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section class="section">
+  <div class="section-head reveal">
+    <div>
+      <p class="eyebrow">Catálogo</p>
+      <h2>Compre por categoria</h2>
+    </div>
+    <button type="button" class="link-more" id="verTodasCat" style="background:none;border:none;font:inherit;cursor:pointer">Ver as 16 categorias →</button>
+  </div>
+  <div class="cat-grid">
+    <a class="cat-card reveal" href="vestidos.html">
+      <svg class="cat-icon"><use href="icons.svg#ic-vestido"></use></svg>
+      <span class="cat-count">6 peças</span>
+      <h3>Vestidos</h3>
+      <span class="cat-go">Ver todas →</span>
+    </a>
+    <a class="cat-card reveal" href="blusas.html">
+      <svg class="cat-icon"><use href="icons.svg#ic-blusa"></use></svg>
+      <span class="cat-count">6 peças</span>
+      <h3>Blusas</h3>
+      <span class="cat-go">Ver todas →</span>
+    </a>
+    <a class="cat-card reveal" href="calcas.html">
+      <svg class="cat-icon"><use href="icons.svg#ic-calca"></use></svg>
+      <span class="cat-count">6 peças</span>
+      <h3>Calças</h3>
+      <span class="cat-go">Ver todas →</span>
+    </a>
+    <a class="cat-card reveal" href="jaquetas.html">
+      <svg class="cat-icon"><use href="icons.svg#ic-jaqueta"></use></svg>
+      <span class="cat-count">5 peças</span>
+      <h3>Jaquetas e Casacos</h3>
+      <span class="cat-go">Ver todas →</span>
+    </a>
+    <a class="cat-card reveal" href="saias.html">
+      <svg class="cat-icon"><use href="icons.svg#ic-saia"></use></svg>
+      <span class="cat-count">4 peças</span>
+      <h3>Saias</h3>
+      <span class="cat-go">Ver todas →</span>
+    </a>
+    <a class="cat-card reveal" href="bolsas-calcados.html">
+      <svg class="cat-icon"><use href="icons.svg#ic-bolsa"></use></svg>
+      <span class="cat-count">4 peças</span>
+      <h3>Bolsas e Calçados</h3>
+      <span class="cat-go">Ver todas →</span>
+    </a>
+  </div>
+</section>
+
+<!-- DESTAQUES -->
+<section class="section" style="padding-top:0">
+  <div class="section-head reveal">
+    <div>
+      <p class="eyebrow">Selo Rocha Firme</p>
+      <h2>Novidades da semana</h2>
+    </div>
+    <a href="todas.html" class="link-more">Ver catálogo completo →</a>
+  </div>
+  <div class="product-grid" id="featuredGrid"></div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <h2 class="reveal">Rocha por fora.<br>Firme por dentro.</h2>
+    <div class="manifesto-list">
+      <div class="manifesto-item reveal">
+        <span class="num">Tecido</span>
+        <h4>Matéria-prima que aguenta o tranco</h4>
+        <p>Selecionamos tecidos encorpados, testados para resistir à rotina real: trabalho, corre, festa e tudo no mesmo dia.</p>
+      </div>
+      <div class="manifesto-item reveal">
+        <span class="num">Corte</span>
+        <h4>Modelagem pensada pro corpo brasileiro</h4>
+        <p>Caimento estudado em diferentes biotipos, sem sacrificar conforto por estética — nem o contrário.</p>
+      </div>
+      <div class="manifesto-item reveal">
+        <span class="num">Acabamento</span>
+        <h4>Costura reforçada, selo de qualidade</h4>
+        <p>Cada peça passa por inspeção antes de sair da loja. Se não é firme, não leva o nosso selo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Atendimento direto</p>
+  <h2 class="reveal">Dúvida de tamanho, cor ou entrega? Fala com a gente no WhatsApp.</h2>
+  <p>Resposta rápida, sem robô — time real te ajudando a escolher.</p>
+  <a class="btn" data-whats="Olá! Preciso de ajuda para escolher uma peça na Rocha Firme Moda.">
+    Chamar no WhatsApp
+  </a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('home');
+
+  document.getElementById('heroOpenCat').addEventListener('click', () => document.getElementById('catTrigger').click());
+  document.getElementById('verTodasCat').addEventListener('click', () => document.getElementById('catTrigger').click());
+
+  (async () => {
+    const grid = document.getElementById('featuredGrid');
+    grid.innerHTML = `<div class="empty-state">Carregando peças…</div>`;
+    const catalogo = await carregarCatalogo();
+
+    // Vitrine de destaques: novidades de cada categoria
+    const destaques = [];
+    Object.keys(catalogo).forEach(key => {
+      catalogo[key].items.filter(p => p.nova).slice(0,1).forEach(p => destaques.push({cat:key, p}));
+    });
+    grid.innerHTML = destaques.slice(0,8).map(d => productCardHTML(d.cat, d.p)).join('');
+    grid.querySelectorAll('[data-whats]').forEach(a => { a.href = whatsLink(a.getAttribute('data-whats')); a.target='_blank'; a.rel='noopener'; });
+    grid.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  })();
+</script>
+</body>
+</html>

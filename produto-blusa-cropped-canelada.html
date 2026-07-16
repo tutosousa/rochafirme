@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blusa Cropped Canelada — Rocha Firme Moda</title>
+<meta name="description" content="Malha canelada, caimento justo. R$ 99,90. Fale com a gente no WhatsApp.">
+
+<!-- Open Graph / prévia no WhatsApp -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="Blusa Cropped Canelada — Rocha Firme Moda">
+<meta property="og:description" content="Malha canelada, caimento justo. R$ 99,90. Fale com a gente no WhatsApp.">
+<meta property="og:image" content="https://rochafirmemoda.com.br/produto-imagens/blusa-cropped-canelada.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1500">
+<meta property="og:url" content="https://rochafirmemoda.com.br/produto-blusa-cropped-canelada.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / <a href="blusas.html">Blusas</a> / Blusa Cropped Canelada</p>
+
+<section class="section" style="padding-top:36px">
+  <div class="product-detail">
+    <div class="product-detail-media">
+      <img src="produto-imagens/blusa-cropped-canelada.png" alt="Blusa Cropped Canelada" style="width:100%;display:block">
+    </div>
+    <div class="product-detail-info reveal">
+      <p class="eyebrow">Blusas</p>
+      <h1>Blusa Cropped Canelada</h1>
+      <p class="product-detail-desc">Malha canelada, caimento justo.</p>
+      <div class="product-price">R$ 99,90</div>
+      <div class="swatches"><span class="swatch" style="background:#221F1C" title="Preto"></span><span class="swatch" style="background:#5C2430" title="Vinho"></span><span class="swatch" style="background:#4B5A45" title="Verde Musgo"></span></div>
+      <div class="sizes"><span>P</span><span>M</span><span>G</span></div>
+      <a class="btn btn-primary" data-whats="Olá! Tenho interesse nesta peça da Rocha Firme Moda:
+Blusa Cropped Canelada - R$ 99,90
+https://rochafirmemoda.com.br/produto-blusa-cropped-canelada.html
+
+Ainda está disponível?" style="margin-top:24px">
+        <svg><use href="icons.svg#ic-whats"></use></svg>
+        Comprar no WhatsApp
+      </a>
+      <div style="margin-top:18px">
+        <a class="link-more" href="blusas.html">← Voltar para Blusas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
+  <h2 class="reveal">Veja mais opções de blusas no catálogo.</h2>
+  <a class="btn" href="blusas.html">Ver blusas</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('blusas');
+  document.querySelectorAll('[data-whats]').forEach(a => {
+    a.href = whatsLink(a.getAttribute('data-whats'));
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <!-- Calça (pants) -->
+  <symbol id="ic-calca" viewBox="0 0 120 160">
+    <path d="M28 14 H92 L96 40 L86 150 H66 L60 66 L54 150 H34 L24 40 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M28 34 H92" stroke="currentColor" stroke-width="3"/>
+    <path d="M40 14 V30 M80 14 V30" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Blusa feminina (blouse) -->
+  <symbol id="ic-blusa" viewBox="0 0 120 160">
+    <path d="M60 18 C52 18 46 24 46 24 L22 38 L30 58 L46 50 L44 148 H76 L74 50 L90 58 L98 38 L74 24 C74 24 68 18 60 18 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M46 24 C50 34 70 34 74 24" fill="none" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Camiseta (t-shirt) -->
+  <symbol id="ic-camiseta" viewBox="0 0 120 160">
+    <path d="M60 20 C53 20 47 25 47 25 L20 40 L28 62 L44 54 L44 146 H76 L76 54 L92 62 L100 40 L73 25 C73 25 67 20 60 20 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M47 25 C51 32 69 32 73 25" fill="none" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Vestido (dress) -->
+  <symbol id="ic-vestido" viewBox="0 0 120 160">
+    <path d="M60 16 C54 16 49 21 49 21 L38 34 L44 44 L52 38 L38 146 H82 L68 38 L76 44 L82 34 L71 21 C71 21 66 16 60 16 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M49 21 C53 30 67 30 71 21" fill="none" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Jaqueta (jacket) -->
+  <symbol id="ic-jaqueta" viewBox="0 0 120 160">
+    <path d="M60 18 L46 26 L18 36 L26 62 L40 55 L38 148 H58 L60 90 L62 148 H82 L80 55 L94 62 L102 36 L74 26 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M60 18 V148 M46 26 L60 40 L74 26" fill="none" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Selo / stamp mark: mountain + firm text ring -->
+  <symbol id="ic-selo" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 5"/>
+    <circle cx="100" cy="100" r="76" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M55 122 L82 78 L98 104 L112 84 L145 122 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <path id="selo-arc-top" d="M 32 100 A 68 68 0 0 1 168 100" fill="none"/>
+    <path id="selo-arc-bottom" d="M 168 104 A 68 68 0 0 1 32 104" fill="none"/>
+    <text font-family="'Space Mono', monospace" font-size="13" letter-spacing="3" fill="currentColor">
+      <textPath href="#selo-arc-top" startOffset="50%" text-anchor="middle">ROCHA FIRME</textPath>
+    </text>
+    <text font-family="'Space Mono', monospace" font-size="13" letter-spacing="3" fill="currentColor">
+      <textPath href="#selo-arc-bottom" startOffset="50%" text-anchor="middle">MODA · DESDE 2024</textPath>
+    </text>
+  </symbol>
+
+  <!-- Body -->
+  <symbol id="ic-body" viewBox="0 0 120 160">
+    <path d="M60 18 C53 18 47 24 47 24 L24 36 L32 56 L46 49 L46 100 C40 104 36 112 36 122 L36 146 H84 L84 122 C84 112 80 104 74 100 L74 49 L88 56 L96 36 L73 24 C73 24 67 18 60 18 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M47 24 C51 33 69 33 73 24" fill="none" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Tricot (sweater) -->
+  <symbol id="ic-tricot" viewBox="0 0 120 160">
+    <path d="M60 20 C52 20 45 27 45 27 L18 42 L27 64 L44 55 L44 148 H76 L76 55 L93 64 L102 42 L75 27 C75 27 68 20 60 20 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M45 27 C49 36 71 36 75 27" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M30 70 H90 M28 92 H92 M26 114 H94" stroke="currentColor" stroke-width="2" opacity=".5"/>
+  </symbol>
+
+  <!-- Blazer -->
+  <symbol id="ic-blazer" viewBox="0 0 120 160">
+    <path d="M60 18 L44 28 L16 40 L24 64 L40 56 L34 148 H58 L60 96 L62 148 H86 L80 56 L96 64 L104 40 L76 28 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M44 28 L60 60 L76 28" fill="none" stroke="currentColor" stroke-width="3"/>
+    <circle cx="66" cy="86" r="2.4" fill="currentColor"/>
+    <circle cx="66" cy="104" r="2.4" fill="currentColor"/>
+  </symbol>
+
+  <!-- Camisa (button-up shirt) -->
+  <symbol id="ic-camisa" viewBox="0 0 120 160">
+    <path d="M60 18 L45 27 L20 39 L28 60 L44 52 L40 148 H80 L76 52 L92 60 L100 39 L75 27 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M45 27 L60 46 L75 27" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M60 46 V148" stroke="currentColor" stroke-width="2" opacity=".6"/>
+    <circle cx="60" cy="68" r="2" fill="currentColor"/>
+    <circle cx="60" cy="88" r="2" fill="currentColor"/>
+    <circle cx="60" cy="108" r="2" fill="currentColor"/>
+  </symbol>
+
+  <!-- Macacão (jumpsuit) -->
+  <symbol id="ic-macacao" viewBox="0 0 120 160">
+    <path d="M60 16 C53 16 47 22 47 22 L26 34 L33 52 L46 46 L46 76 L30 84 L36 148 H54 L58 96 L62 96 L66 148 H84 L90 84 L74 76 L74 46 L87 52 L94 34 L73 22 C73 22 67 16 60 16 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M47 22 C51 30 69 30 73 22" fill="none" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Saia (skirt) -->
+  <symbol id="ic-saia" viewBox="0 0 120 160">
+    <path d="M42 30 H78 L80 46 L104 130 H16 L40 46 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M42 30 H78" stroke="currentColor" stroke-width="3"/>
+    <path d="M40 46 H80" stroke="currentColor" stroke-width="2" opacity=".5"/>
+    <path d="M32 78 L34 130 M60 78 L60 130 M88 78 L86 130" stroke="currentColor" stroke-width="2" opacity=".35"/>
+  </symbol>
+
+  <!-- Bolsa (bag) -->
+  <symbol id="ic-bolsa" viewBox="0 0 120 160">
+    <path d="M22 58 H98 L92 138 H28 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M42 58 V40 C42 26 51 18 60 18 C69 18 78 26 78 40 V58" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M22 78 H98" stroke="currentColor" stroke-width="2" opacity=".5"/>
+  </symbol>
+
+  <!-- Acessório (ring/jewel) -->
+  <symbol id="ic-acessorio" viewBox="0 0 120 160">
+    <circle cx="60" cy="96" r="34" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M42 62 L60 26 L78 62 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M50 62 H70" stroke="currentColor" stroke-width="2"/>
+  </symbol>
+
+  <!-- Short/Bermuda -->
+  <symbol id="ic-short" viewBox="0 0 120 160">
+    <path d="M26 24 H94 L98 46 L92 96 L74 96 L70 60 L64 96 L48 96 L44 60 L40 96 L22 96 L18 46 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M26 42 H94" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+
+  <!-- Couro (leather jacket, riveted) -->
+  <symbol id="ic-couro" viewBox="0 0 120 160">
+    <path d="M60 18 L45 27 L18 38 L26 62 L42 54 L38 148 H58 L60 90 L62 90 L64 148 H84 L80 54 L96 62 L104 38 L77 27 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M45 27 L60 42 L75 27" fill="none" stroke="currentColor" stroke-width="3"/>
+    <circle cx="50" cy="70" r="2" fill="currentColor"/>
+    <circle cx="50" cy="90" r="2" fill="currentColor"/>
+    <circle cx="70" cy="70" r="2" fill="currentColor"/>
+    <circle cx="70" cy="90" r="2" fill="currentColor"/>
+  </symbol>
+
+  <!-- ícones utilitários do header -->
+  <symbol id="ic-search" viewBox="0 0 24 24">
+    <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M20 20 L15.2 15.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-user" viewBox="0 0 24 24">
+    <circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M4.5 20.5 C4.5 15.8 7.8 13 12 13 C16.2 13 19.5 15.8 19.5 20.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24">
+    <path d="M12 20 C12 20 3 14.2 3 8.4 C3 5.4 5.4 3.2 8.2 3.2 C10 3.2 11.3 4.1 12 5.2 C12.7 4.1 14 3.2 15.8 3.2 C18.6 3.2 21 5.4 21 8.4 C21 14.2 12 20 12 20 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="ic-bag" viewBox="0 0 24 24">
+    <path d="M6 8 H18 L17 21 H7 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M9 8 V6 C9 4.3 10.3 3 12 3 C13.7 3 15 4.3 15 6 V8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  </symbol>
+  <symbol id="ic-close" viewBox="0 0 24 24">
+    <path d="M5 5 L19 19 M19 5 L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ic-chevron" viewBox="0 0 24 24">
+    <path d="M6 9 L12 15 L18 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- WhatsApp -->
+  <symbol id="ic-whats" viewBox="0 0 32 32">
+    <path fill="currentColor" d="M16.02 3C9.4 3 4 8.37 4 15c0 2.36.68 4.57 1.86 6.44L4 29l7.76-1.83A11.9 11.9 0 0 0 16.02 27C22.63 27 28 21.63 28 15S22.63 3 16.02 3Zm0 21.7c-1.98 0-3.86-.56-5.47-1.53l-.39-.23-4.6 1.08 1.1-4.48-.26-.42A9.66 9.66 0 0 1 5.3 15c0-5.9 4.8-10.7 10.72-10.7S26.74 9.1 26.74 15 21.94 24.7 16.02 24.7Zm5.86-8.02c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.84 1.04-1.03 1.26-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.6-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.5.14-.65.14-.14.32-.38.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.73-1.77-1-2.42-.26-.63-.53-.55-.73-.56h-.62c-.21 0-.56.08-.86.4-.29.32-1.13 1.1-1.13 2.7 0 1.59 1.16 3.13 1.32 3.35.16.21 2.29 3.5 5.55 4.9.78.34 1.38.54 1.86.69.78.25 1.49.21 2.05.13.62-.09 1.9-.78 2.17-1.53.27-.75.27-1.4.19-1.53-.08-.13-.29-.21-.61-.37Z"/>
+  </symbol>
+
+</svg>

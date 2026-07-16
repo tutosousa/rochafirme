@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shorts e Bermudas — Rocha Firme Moda</title>
+<meta name="description" content="Shorts e Bermudas Rocha Firme Moda: Alfaiataria, jeans e cargo — leveza com o corte firme de sempre. Compre pelo WhatsApp.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / Shorts e Bermudas</p>
+
+<section class="cat-hero">
+  <div class="cat-hero-inner">
+    <div>
+      <p class="eyebrow">Categoria</p>
+      <h1>Shorts e Bermudas</h1>
+      <p>Alfaiataria, jeans e cargo — leveza com o corte firme de sempre.</p>
+    </div>
+    <svg class="cat-hero-icon"><use href="icons.svg#ic-short"></use></svg>
+  </div>
+</section>
+
+<section class="section">
+  <div class="filters">
+    <span class="filters-label">Tamanho:</span>
+    <button data-filter-size="36">36</button>
+    <button data-filter-size="38">38</button>
+    <button data-filter-size="40">40</button>
+    <button data-filter-size="42">42</button>
+    <button data-filter-size="44">44</button>
+    <button data-filter-size="P">P</button>
+    <button data-filter-size="M">M</button>
+    <button data-filter-size="G">G</button>
+  </div>
+  <div class="filters">
+    <span class="filters-label">Cor:</span>
+    <button data-filter-color="preto">Preto</button>
+    <button data-filter-color="areia">Areia</button>
+    <button data-filter-color="jeans">Jeans</button>
+    <button data-filter-color="verde">Verde Musgo</button>
+    <button data-filter-color="cinza">Cinza Pedra</button>
+  </div>
+  <div class="product-grid" id="grid"></div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não achou o tamanho?</p>
+  <h2 class="reveal">A gente confirma estoque e te ajuda a escolher o caimento certo.</h2>
+  <a class="btn" data-whats="Olá! Estou vendo a categoria Shorts e Bermudas no site e preciso de ajuda para escolher.">Chamar no WhatsApp</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('shorts-bermudas');
+  initCategoryPage('shorts-bermudas', 'grid');
+</script>
+</body>
+</html>

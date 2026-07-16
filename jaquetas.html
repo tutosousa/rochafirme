@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaquetas e Casacos — Rocha Firme Moda</title>
+<meta name="description" content="Jaquetas e Casacos Rocha Firme Moda: Corta-vento, alfaiataria, bomber e trench — a camada que fecha o look com firmeza. Compre pelo WhatsApp.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / Jaquetas e Casacos</p>
+
+<section class="cat-hero">
+  <div class="cat-hero-inner">
+    <div>
+      <p class="eyebrow">Categoria</p>
+      <h1>Jaquetas e Casacos</h1>
+      <p>Corta-vento, alfaiataria, bomber e trench — a camada que fecha o look com firmeza.</p>
+    </div>
+    <svg class="cat-hero-icon"><use href="icons.svg#ic-jaqueta"></use></svg>
+  </div>
+</section>
+
+<section class="section">
+  <div class="filters">
+    <span class="filters-label">Tamanho:</span>
+    <button data-filter-size="P">P</button>
+    <button data-filter-size="M">M</button>
+    <button data-filter-size="G">G</button>
+    <button data-filter-size="GG">GG</button>
+  </div>
+  <div class="filters">
+    <span class="filters-label">Cor:</span>
+    <button data-filter-color="preto">Preto</button>
+    <button data-filter-color="verde">Verde Musgo</button>
+    <button data-filter-color="areia">Areia</button>
+    <button data-filter-color="vinho">Vinho</button>
+    <button data-filter-color="offwhite">Off-white</button>
+    <button data-filter-color="terracota">Terracota</button>
+  </div>
+  <div class="product-grid" id="grid"></div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não achou o tamanho?</p>
+  <h2 class="reveal">A gente confirma estoque e te ajuda a escolher o caimento certo.</h2>
+  <a class="btn" data-whats="Olá! Estou vendo a categoria Jaquetas e Casacos no site e preciso de ajuda para escolher.">Chamar no WhatsApp</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('jaquetas');
+  initCategoryPage('jaquetas', 'grid');
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produto — Rocha Firme Moda</title>
+<meta name="description" content="Confira essa peça na Rocha Firme Moda.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<p class="breadcrumb" id="breadcrumb"><a href="index.html">Início</a> / <span id="breadcrumbAtual">Produto</span></p>
+
+<section class="section" style="padding-top:36px">
+  <div id="conteudoProduto">
+    <div class="empty-state">Carregando produto…</div>
+  </div>
+</section>
+
+<div id="ctaCategoria"></div>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('todas');
+
+  (async () => {
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+    const wrap = document.getElementById('conteudoProduto');
+
+    if(!slug){
+      wrap.innerHTML = `<div class="empty-state">Produto não especificado.<br><a href="todas.html" class="link-more" style="display:inline-block;margin-top:12px">Ver catálogo completo →</a></div>`;
+      return;
+    }
+
+    const catalogo = await carregarCatalogo();
+    let achado = null, catKey = null;
+    for(const key of Object.keys(catalogo)){
+      const p = catalogo[key].items.find(item => item.slug === slug);
+      if(p){ achado = p; catKey = key; break; }
+    }
+
+    if(!achado){
+      wrap.innerHTML = `<div class="empty-state">Esse produto não foi encontrado (pode ter sido removido).<br><a href="todas.html" class="link-more" style="display:inline-block;margin-top:12px">Ver catálogo completo →</a></div>`;
+      return;
+    }
+
+    const p = achado;
+    const catLabel = CATEGORIA_INFO[catKey] ? CATEGORIA_INFO[catKey].label : '';
+    const icon = CATEGORIA_INFO[catKey] ? CATEGORIA_INFO[catKey].icon : 'ic-selo';
+    const nomeSeguro = escapeHTML(p.nome);
+    const descSeguro = escapeHTML(p.desc);
+    const fotoSrc = p.foto ? (/^https?:\/\//i.test(p.foto) ? p.foto : `fotos/${p.foto}`) : null;
+    const midia = fotoSrc
+      ? `<img src="${fotoSrc}" alt="${nomeSeguro}" style="width:100%;display:block" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+         <div class="product-detail-media-fallback" style="display:none;align-items:center;justify-content:center;aspect-ratio:3/4"><svg style="width:52%;color:var(--clay-dark)"><use href="icons.svg#${icon}"></use></svg></div>`
+      : `<div style="display:flex;align-items:center;justify-content:center;aspect-ratio:3/4"><svg style="width:52%;color:var(--clay-dark)"><use href="icons.svg#${icon}"></use></svg></div>`;
+    const swatchesHTML = p.cores.map(c => `<span class="swatch" style="background:${corHex(c)}" title="${escapeHTML(nomeCorExibir(c))}"></span>`).join('');
+    const sizesHTML = p.tamanhos.map(t => `<span>${escapeHTML(t)}</span>`).join('');
+    const linkCompleto = PAGINAS_PRONTAS.has(p.slug) ? produtoLink(p.slug) : `${window.LOJA.siteUrl}/produto.html?slug=${encodeURIComponent(p.slug)}`;
+    const msg = `Olá! Tenho interesse nesta peça da Rocha Firme Moda:\n${p.nome} - ${fmtPreco(p.preco)}\n${linkCompleto}\n\nAinda está disponível?`;
+
+    document.title = `${p.nome} — Rocha Firme Moda`;
+    document.getElementById('breadcrumbAtual').textContent = p.nome;
+    document.getElementById('breadcrumb').innerHTML =
+      `<a href="index.html">Início</a> / <a href="${catKey}.html">${escapeHTML(catLabel)}</a> / ${nomeSeguro}`;
+
+    wrap.innerHTML = `
+      <div class="product-detail">
+        <div class="product-detail-media">${midia}</div>
+        <div class="product-detail-info reveal">
+          <p class="eyebrow">${escapeHTML(catLabel)}</p>
+          <h1>${nomeSeguro}</h1>
+          <p class="product-detail-desc">${descSeguro}</p>
+          <div class="product-price">${fmtPreco(p.preco)}</div>
+          <div class="swatches">${swatchesHTML}</div>
+          <div class="sizes">${sizesHTML}</div>
+          <a class="btn btn-primary" data-whats="${escapeHTML(msg)}" style="margin-top:24px">
+            <svg><use href="icons.svg#ic-whats"></use></svg>
+            Comprar no WhatsApp
+          </a>
+          <div style="margin-top:18px">
+            <a class="link-more" href="${catKey}.html">← Voltar para ${escapeHTML(catLabel)}</a>
+          </div>
+        </div>
+      </div>`;
+
+    document.getElementById('ctaCategoria').innerHTML = `
+      <section class="cta-strip">
+        <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
+        <h2 class="reveal">Veja mais opções de ${escapeHTML(catLabel.toLowerCase())} no catálogo.</h2>
+        <a class="btn" href="${catKey}.html">Ver ${escapeHTML(catLabel.toLowerCase())}</a>
+      </section>`;
+
+    document.querySelectorAll('[data-whats]').forEach(a => {
+      a.href = whatsLink(a.getAttribute('data-whats'));
+      a.target = '_blank'; a.rel = 'noopener';
+    });
+  })();
+</script>
+</body>
+</html>

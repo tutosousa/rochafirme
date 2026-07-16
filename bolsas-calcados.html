@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolsas e Calçados — Rocha Firme Moda</title>
+<meta name="description" content="Bolsas e Calçados Rocha Firme Moda: Tote, transversal, sandálias e botas — os acabamentos que fecham o look. Compre pelo WhatsApp.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / Bolsas e Calçados</p>
+
+<section class="cat-hero">
+  <div class="cat-hero-inner">
+    <div>
+      <p class="eyebrow">Categoria</p>
+      <h1>Bolsas e Calçados</h1>
+      <p>Tote, transversal, sandálias e botas — os acabamentos que fecham o look.</p>
+    </div>
+    <svg class="cat-hero-icon"><use href="icons.svg#ic-bolsa"></use></svg>
+  </div>
+</section>
+
+<section class="section">
+  <div class="filters">
+    <span class="filters-label">Tamanho:</span>
+    <button data-filter-size="Único">Único</button>
+    <button data-filter-size="34">34</button>
+    <button data-filter-size="35">35</button>
+    <button data-filter-size="36">36</button>
+    <button data-filter-size="37">37</button>
+    <button data-filter-size="38">38</button>
+    <button data-filter-size="39">39</button>
+  </div>
+  <div class="filters">
+    <span class="filters-label">Cor:</span>
+    <button data-filter-color="marrom">Marrom Couro</button>
+    <button data-filter-color="preto">Preto</button>
+    <button data-filter-color="terracota">Terracota</button>
+    <button data-filter-color="dourado">Dourado</button>
+  </div>
+  <div class="product-grid" id="grid"></div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não achou o tamanho?</p>
+  <h2 class="reveal">A gente confirma estoque e te ajuda a escolher o caimento certo.</h2>
+  <a class="btn" data-whats="Olá! Estou vendo a categoria Bolsas e Calçados no site e preciso de ajuda para escolher.">Chamar no WhatsApp</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('bolsas-calcados');
+  initCategoryPage('bolsas-calcados', 'grid');
+</script>
+</body>
+</html>

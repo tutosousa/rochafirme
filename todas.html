@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todas as peças — Rocha Firme Moda</title>
+<meta name="description" content="Catálogo completo Rocha Firme Moda: todas as categorias em um só lugar. Compre pelo WhatsApp.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / Todas as peças</p>
+
+<section class="cat-hero">
+  <div class="cat-hero-inner">
+    <div>
+      <p class="eyebrow">Catálogo completo</p>
+      <h1>Todas as peças</h1>
+      <p>Todo o catálogo Rocha Firme Moda em um só lugar. Filtre por categoria para achar mais rápido.</p>
+    </div>
+    <svg class="cat-hero-icon"><use href="icons.svg#ic-selo"></use></svg>
+  </div>
+</section>
+
+<section class="section">
+  <div class="filters" id="catFilters">
+    <span class="filters-label">Categoria:</span>
+    <button data-filter-cat="vestidos">Vestidos</button>
+    <button data-filter-cat="blusas">Blusas</button>
+    <button data-filter-cat="calcas">Calças</button>
+    <button data-filter-cat="body">Body</button>
+    <button data-filter-cat="tricot">Tricot</button>
+    <button data-filter-cat="jaquetas">Jaquetas e Casacos</button>
+    <button data-filter-cat="blazers">Blazers</button>
+    <button data-filter-cat="camisas">Camisas</button>
+    <button data-filter-cat="tshirts">T-shirts</button>
+    <button data-filter-cat="jeans">Jeans</button>
+    <button data-filter-cat="macacoes">Macacões</button>
+    <button data-filter-cat="saias">Saias</button>
+    <button data-filter-cat="bolsas-calcados">Bolsas e Calçados</button>
+    <button data-filter-cat="acessorios">Acessórios</button>
+    <button data-filter-cat="shorts-bermudas">Shorts e Bermudas</button>
+    <button data-filter-cat="couro">Couro</button>
+  </div>
+  <div class="product-grid" id="grid"></div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não achou o que procura?</p>
+  <h2 class="reveal">A gente confirma estoque e te ajuda a escolher a peça certa.</h2>
+  <a class="btn" data-whats="Olá! Estou vendo o catálogo completo da Rocha Firme Moda e preciso de ajuda.">Chamar no WhatsApp</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('todas');
+  initTodasPage('grid');
+</script>
+</body>
+</html>

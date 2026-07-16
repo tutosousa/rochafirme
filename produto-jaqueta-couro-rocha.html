@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaqueta Couro Rocha — Rocha Firme Moda</title>
+<meta name="description" content="Couro legítimo, forro interno. R$ 449,90. Fale com a gente no WhatsApp.">
+
+<!-- Open Graph / prévia no WhatsApp -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="Jaqueta Couro Rocha — Rocha Firme Moda">
+<meta property="og:description" content="Couro legítimo, forro interno. R$ 449,90. Fale com a gente no WhatsApp.">
+<meta property="og:image" content="https://rochafirmemoda.com.br/produto-imagens/jaqueta-couro-rocha.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1500">
+<meta property="og:url" content="https://rochafirmemoda.com.br/produto-jaqueta-couro-rocha.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / <a href="couro.html">Couro</a> / Jaqueta Couro Rocha</p>
+
+<section class="section" style="padding-top:36px">
+  <div class="product-detail">
+    <div class="product-detail-media">
+      <img src="produto-imagens/jaqueta-couro-rocha.png" alt="Jaqueta Couro Rocha" style="width:100%;display:block">
+    </div>
+    <div class="product-detail-info reveal">
+      <p class="eyebrow">Couro</p>
+      <h1>Jaqueta Couro Rocha</h1>
+      <p class="product-detail-desc">Couro legítimo, forro interno.</p>
+      <div class="product-price">R$ 449,90</div>
+      <div class="swatches"><span class="swatch" style="background:#221F1C" title="Preto"></span><span class="swatch" style="background:#6B4A32" title="Marrom Couro"></span></div>
+      <div class="sizes"><span>P</span><span>M</span><span>G</span></div>
+      <a class="btn btn-primary" data-whats="Olá! Tenho interesse nesta peça da Rocha Firme Moda:
+Jaqueta Couro Rocha - R$ 449,90
+https://rochafirmemoda.com.br/produto-jaqueta-couro-rocha.html
+
+Ainda está disponível?" style="margin-top:24px">
+        <svg><use href="icons.svg#ic-whats"></use></svg>
+        Comprar no WhatsApp
+      </a>
+      <div style="margin-top:18px">
+        <a class="link-more" href="couro.html">← Voltar para Couro</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
+  <h2 class="reveal">Veja mais opções de couro no catálogo.</h2>
+  <a class="btn" href="couro.html">Ver couro</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('couro');
+  document.querySelectorAll('[data-whats]').forEach(a => {
+    a.href = whatsLink(a.getAttribute('data-whats'));
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+</script>
+</body>
+</html>

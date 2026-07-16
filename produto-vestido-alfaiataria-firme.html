@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vestido Alfaiataria Firme — Rocha Firme Moda</title>
+<meta name="description" content="Cinto na cintura, corte reto. R$ 249,90. Fale com a gente no WhatsApp.">
+
+<!-- Open Graph / prévia no WhatsApp -->
+<meta property="og:type" content="product">
+<meta property="og:title" content="Vestido Alfaiataria Firme — Rocha Firme Moda">
+<meta property="og:description" content="Cinto na cintura, corte reto. R$ 249,90. Fale com a gente no WhatsApp.">
+<meta property="og:image" content="https://rochafirmemoda.com.br/produto-imagens/vestido-alfaiataria-firme.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="1500">
+<meta property="og:url" content="https://rochafirmemoda.com.br/produto-vestido-alfaiataria-firme.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / <a href="vestidos.html">Vestidos</a> / Vestido Alfaiataria Firme</p>
+
+<section class="section" style="padding-top:36px">
+  <div class="product-detail">
+    <div class="product-detail-media">
+      <img src="produto-imagens/vestido-alfaiataria-firme.png" alt="Vestido Alfaiataria Firme" style="width:100%;display:block">
+    </div>
+    <div class="product-detail-info reveal">
+      <p class="eyebrow">Vestidos</p>
+      <h1>Vestido Alfaiataria Firme</h1>
+      <p class="product-detail-desc">Cinto na cintura, corte reto.</p>
+      <div class="product-price">R$ 249,90</div>
+      <div class="swatches"><span class="swatch" style="background:#221F1C" title="Preto"></span><span class="swatch" style="background:#D8C9A8" title="Areia"></span></div>
+      <div class="sizes"><span>P</span><span>M</span><span>G</span><span>GG</span></div>
+      <a class="btn btn-primary" data-whats="Olá! Tenho interesse nesta peça da Rocha Firme Moda:
+Vestido Alfaiataria Firme - R$ 249,90
+https://rochafirmemoda.com.br/produto-vestido-alfaiataria-firme.html
+
+Ainda está disponível?" style="margin-top:24px">
+        <svg><use href="icons.svg#ic-whats"></use></svg>
+        Comprar no WhatsApp
+      </a>
+      <div style="margin-top:18px">
+        <a class="link-more" href="vestidos.html">← Voltar para Vestidos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
+  <h2 class="reveal">Veja mais opções de vestidos no catálogo.</h2>
+  <a class="btn" href="vestidos.html">Ver vestidos</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('vestidos');
+  document.querySelectorAll('[data-whats]').forEach(a => {
+    a.href = whatsLink(a.getAttribute('data-whats'));
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+</script>
+</body>
+</html>

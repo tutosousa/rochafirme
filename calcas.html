@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calças — Rocha Firme Moda</title>
+<meta name="description" content="Calças Rocha Firme Moda: Alfaiataria, wide leg, cargo e pantalona — corte firme pra sustentar o corre do dia. Compre pelo WhatsApp.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="site-header"></div>
+
+<p class="breadcrumb"><a href="index.html">Início</a> / Calças</p>
+
+<section class="cat-hero">
+  <div class="cat-hero-inner">
+    <div>
+      <p class="eyebrow">Categoria</p>
+      <h1>Calças</h1>
+      <p>Alfaiataria, wide leg, cargo e pantalona — corte firme pra sustentar o corre do dia.</p>
+    </div>
+    <svg class="cat-hero-icon"><use href="icons.svg#ic-calca"></use></svg>
+  </div>
+</section>
+
+<section class="section">
+  <div class="filters">
+    <span class="filters-label">Tamanho:</span>
+    <button data-filter-size="36">36</button>
+    <button data-filter-size="38">38</button>
+    <button data-filter-size="40">40</button>
+    <button data-filter-size="42">42</button>
+    <button data-filter-size="44">44</button>
+    <button data-filter-size="46">46</button>
+  </div>
+  <div class="filters">
+    <span class="filters-label">Cor:</span>
+    <button data-filter-color="preto">Preto</button>
+    <button data-filter-color="areia">Areia</button>
+    <button data-filter-color="jeans">Jeans</button>
+    <button data-filter-color="offwhite">Off-white</button>
+    <button data-filter-color="cinza">Cinza Pedra</button>
+    <button data-filter-color="vinho">Vinho</button>
+  </div>
+  <div class="product-grid" id="grid"></div>
+</section>
+
+<section class="cta-strip">
+  <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não achou o tamanho?</p>
+  <h2 class="reveal">A gente confirma estoque e te ajuda a escolher o caimento certo.</h2>
+  <a class="btn" data-whats="Olá! Estou vendo a categoria Calças no site e preciso de ajuda para escolher.">Chamar no WhatsApp</a>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="main.js"></script>
+<script src="layout.js"></script>
+<script src="products.js"></script>
+<script>
+  mountLayout('calcas');
+  initCategoryPage('calcas', 'grid');
+</script>
+</body>
+</html>
