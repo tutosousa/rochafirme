@@ -147,7 +147,6 @@ const CATALOGO_PADRAO = {
 function fmtPreco(v){
   return v.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
 }
-
 // Evita que texto digitado num produto (nome, descrição, cor...) seja
 // interpretado como HTML/código ao ser exibido no site — proteção contra
 // injeção de conteúdo malicioso via painel/planilha/banco de dados.
@@ -155,6 +154,15 @@ function escapeHTML(str){
   return String(str ?? '').replace(/[&<>"']/g, c => ({
     '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
   }[c]));
+}
+
+// O campo "foto" guarda uma ou mais imagens separadas por ";" (mesmo padrão
+// usado em tamanhos/cores). Aceita tanto URL completa (Storage do Supabase)
+// quanto nome de arquivo local antigo (pasta /fotos).
+function fotosDoProduto(p){
+  if(!p.foto) return [];
+  return String(p.foto).split(';').map(f => f.trim()).filter(Boolean)
+    .map(f => /^https?:\/\//i.test(f) ? f : `fotos/${f}`);
 }
 
 // ===========================================================
@@ -389,7 +397,6 @@ async function carregarCatalogo(){
       console.warn('Não foi possível carregar a planilha de produtos.', err);
     }
   }
-
   // 3) usa o catálogo padrão embutido no site
   _catalogoCarregado = CATALOGO_PADRAO;
   CATALOGO = CATALOGO_PADRAO;
@@ -405,18 +412,20 @@ function productCardHTML(catKey, p){
   const linkProduto = temPagina ? `produto-${p.slug}.html` : `produto.html?slug=${encodeURIComponent(p.slug)}`;
   const nomeSeguro = escapeHTML(p.nome);
   const descSeguro = escapeHTML(p.desc);
-  const sizesHTML = p.tamanhos.map(t => `<span>${escapeHTML(t)}</span>`).join('');
-  const swatchesHTML = p.cores.map(c => `<span class="swatch" style="background:${corHex(c)}" title="${escapeHTML(nomeCorExibir(c))}"></span>`).join('');
+  const tamanhos = Array.isArray(p.tamanhos) ? p.tamanhos : [];
+  const cores = Array.isArray(p.cores) ? p.cores : [];
+  const sizesHTML = tamanhos.map(t => `<span>${escapeHTML(t)}</span>`).join('');
+  const swatchesHTML = cores.map(c => `<span class="swatch" style="background:${corHex(c)}" title="${escapeHTML(nomeCorExibir(c))}"></span>`).join('');
   const linkCompleto = temPagina ? produtoLink(p.slug) : `${window.LOJA.siteUrl}/${linkProduto}`;
   const msg = `Olá! Tenho interesse nesta peça da Rocha Firme Moda:\n${p.nome} - ${fmtPreco(p.preco)}\n${linkCompleto}\n\nAinda está disponível?`;
   const msgSegura = escapeHTML(msg);
-  const fotoSrc = p.foto ? (/^https?:\/\//i.test(p.foto) ? p.foto : `fotos/${p.foto}`) : null;
-  const midia = fotoSrc
-    ? `<img src="${fotoSrc}" alt="${nomeSeguro}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+  const fotos = fotosDoProduto(p);
+  const midia = fotos.length
+    ? `<img src="${fotos[0]}" alt="${nomeSeguro}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
        <svg class="media-fallback" style="display:none"><use href="icons.svg#${icon}"></use></svg>`
     : `<svg><use href="icons.svg#${icon}"></use></svg>`;
   return `
-  <article class="product-card reveal" data-sizes="${p.tamanhos.join(',')}" data-colors="${p.cores.join(',')}">
+  <article class="product-card reveal" data-sizes="${tamanhos.join(',')}" data-colors="${cores.join(',')}">
     <a class="product-media" href="${linkProduto}">
       ${p.nova ? '<span class="tag-new">Novo</span>' : ''}
       ${midia}
