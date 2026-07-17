@@ -83,8 +83,10 @@
            </div>`;
 
       const thumbsHTML = fotos.length > 1
-        ? `<div class="galeria-thumbs">${fotos.map((f, i) =>
-            `<img src="${f}" alt="Foto ${i+1} de ${nomeSeguro}" class="${i===0?'ativa':''}" onclick="trocarFotoPrincipal(this,'${f.replace(/'/g,"\\'")}')">`
+        ? `<div class="galeria-thumbs" style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">${fotos.map((f, i) =>
+            `<img src="${f}" alt="Foto ${i+1} de ${nomeSeguro}" class="${i===0?'ativa':''}"
+                 style="width:64px;height:80px;object-fit:cover;border-radius:3px;cursor:pointer;border:2px solid ${i===0?'var(--clay)':'transparent'};opacity:${i===0?'1':'.7'}"
+                 onclick="trocarFotoPrincipal(this,'${f.replace(/'/g,"\\'")}')">`
           ).join('')}</div>`
         : '';
 
@@ -106,7 +108,7 @@
             ${mediaHTML}
             ${thumbsHTML}
           </div>
-          <div class="product-detail-info reveal">
+          <div class="product-detail-info">
             <p class="eyebrow">${escapeHTML(catLabel)}</p>
             <h1>${nomeSeguro}</h1>
             <p class="product-detail-desc">${descSeguro}</p>
@@ -127,7 +129,7 @@
         document.getElementById('ctaCategoria').innerHTML = `
           <section class="cta-strip">
             <p class="eyebrow" style="justify-content:center;color:#f2ddd6">Não é bem essa a peça?</p>
-            <h2 class="reveal">Veja mais opções de ${escapeHTML(catLabel.toLowerCase())} no catálogo.</h2>
+            <h2>Veja mais opções de ${escapeHTML(catLabel.toLowerCase())} no catálogo.</h2>
             <a class="btn" href="${catKey}.html">Ver ${escapeHTML(catLabel.toLowerCase())}</a>
           </section>`;
       }
@@ -145,8 +147,14 @@
   function trocarFotoPrincipal(thumb, url){
     const principal = document.getElementById('fotoPrincipal');
     if(principal) principal.src = url;
-    document.querySelectorAll('.galeria-thumbs img').forEach(t => t.classList.remove('ativa'));
+    document.querySelectorAll('.galeria-thumbs img').forEach(t => {
+      t.classList.remove('ativa');
+      t.style.borderColor = 'transparent';
+      t.style.opacity = '.7';
+    });
     thumb.classList.add('ativa');
+    thumb.style.borderColor = 'var(--clay)';
+    thumb.style.opacity = '1';
   }
 </script>
 </body>
