@@ -3,7 +3,7 @@
 // Troque os valores abaixo pelos reais da loja
 // ===========================================================
 window.LOJA = {
-  whatsapp: '5581999999999', // <-- SUBSTITUA pelo WhatsApp real (DDI+DDD+número)
+  whatsapp: '5581997163769', // <-- SUBSTITUA pelo WhatsApp real (DDI+DDD+número)
   nome: 'Rocha Firme Moda',
 
   // <-- SUBSTITUA pelo domínio real da loja DEPOIS de publicar o site.
